@@ -20,7 +20,7 @@ const appRoutes: Routes = [ {
     component: MarketplaceComponent
   },
   {
-    path: 'album-detail/:id',
+    path: 'albums/:id',
     component: AlbumDetailComponent
   }
 ];
