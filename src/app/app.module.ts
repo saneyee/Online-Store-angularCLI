@@ -14,7 +14,11 @@ import { AngularFireModule } from 'angularfire2';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
 import { AdminComponent } from './admin/admin.component';
 import { EditAlbumComponent } from './edit-album/edit-album.component';
-
+import { AngularFireAuthModule } from 'angularfire2/auth';
+import { PublicComponent } from './public/public.component';
+import { PrivateComponent } from './private/private.component';
+import { AuthGuard } from './auth-guard.service';
+import { AuthenticationService } from './authentication.service';
 
 export const firebaseConfig = {
   apiKey: masterFirebaseConfig.apiKey,
@@ -31,7 +35,9 @@ export const firebaseConfig = {
     MarketplaceComponent,
     AlbumDetailComponent,
     AdminComponent,
-    EditAlbumComponent
+    EditAlbumComponent,
+    PublicComponent,
+    PrivateComponent
   ],
   imports: [
     BrowserModule,
@@ -39,9 +45,10 @@ export const firebaseConfig = {
     HttpModule,
     routing,
     AngularFireModule.initializeApp(firebaseConfig),
-    AngularFireDatabaseModule
+    AngularFireDatabaseModule,
+    AngularFireAuthModule,
   ],
-  providers: [],
+  providers: [AuthGuard, AuthenticationService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
